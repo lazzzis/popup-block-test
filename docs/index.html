@@ -5,15 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-    <button>
-        CLICK
-    </button>
+    <div class="container py-6">
+        Current interval value: <b id="time"></b>ms.
+        <form action=".">
+            <input class="input" type="text" placeholder="Interval (ms); 300ms in Default" name="i">
+            <button class="button" type="submit">
+                SUBMIT
+            </button>
+        </form>
+
+    </div>
 </body>
 <script>
+    const INTERVAL_PARAM = 'i'
+    const DEFAULT_INTERVAL = 300
+    function getInterval() {
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get(INTERVAL_PARAM) == null) return DEFAULT_INTERVAL
+        const interval = parseInt(urlParams.get(INTERVAL_PARAM))
+        if (isNaN(interval)) return DEFAULT_INTERVAL
+        return interval
+    }
+    const interval = getInterval()
+    const time = document.getElementById('time')
+    time.textContent = interval
     setInterval(() => {
         window.open("http://example.com")
-    }, 300)
+    }, getInterval())
 </script>
 </html>
