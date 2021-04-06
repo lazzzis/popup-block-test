@@ -8,15 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 </head>
 <body>
-    <div class="container py-6">
-        <form action="./single.html">
-            <Button type="submit">Test Popup Block</Button>
-        </form>
-        <form action="./dynamic.html">
-            <Button type="submit">Test Multiple Popup Blocks</Button>
-        </form>
-    </div>
+    Test
 </body>
 <script>
+    window.open("http://example.com")
+    setInterval(() => {
+        window.open("http://example.com")
+    }, 3000)
 </script>
 </html>
